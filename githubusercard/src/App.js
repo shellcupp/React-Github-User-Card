@@ -13,7 +13,12 @@ class App extends Component {
     .get('https://api.github.com/users/shellcupp')
     .then(res => {
       console.log(res.data)
-      
+      this.setState({
+        user:res.data
+      })
+    })
+    .catch(err => {
+      console.log('There is an error', err)
     })
   }
   render(){
@@ -23,6 +28,7 @@ class App extends Component {
      <div className='UserCard'>
      <UserCard
      user={this.state.user}
+     name={this.state.user.name}
      />
      </div>
     </div>
