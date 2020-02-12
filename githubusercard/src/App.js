@@ -7,15 +7,17 @@ import './App.css';
 class App extends Component {
   state = {
     user:[],
-    followers: []
+    follower: []
+   
   }
+
   componentDidMount() {
     Axios 
     .get('https://api.github.com/users/shellcupp')
     .then(res => {
       console.log(res.data)
       this.setState({
-        user:res.data
+        user: res.data
       })
     })
     .catch(err => {
@@ -28,7 +30,7 @@ class App extends Component {
     .then(res => {
       console.log(res.data)
       this.setState({
-        user:res.data
+        follower: res.data
       })
     })
     .catch(err => {
@@ -41,24 +43,30 @@ class App extends Component {
         <h1>React Github User Card</h1>
         <div className='usercard'>
             <UserCard
+            
               user={this.state.user}
               name={this.state.user.name}
-              image={this.state.user.avatar_url}
+              avatar_url={this.state.user.avatar_url}
               bio={this.state.user.bio}
-              githublink={this.state.user.html_url}
+              html_url={this.state.user.html_url}
               />
           </div>
-          <div className="followersList">
-            <h3>List of Followers:</h3>
-            {this.state.followers.map(follower => (
-              <FollowersList
-              key={follower.id}
-              login={follower.login}
-              avatar_url={follower.avatar_url}
-              url={follower.html_url}
-              />
-            ))}
-        </div>
+        
+          <div className='FollowersList'>
+          <h2>{this.state.user.name}'s Followers</h2>
+          {this.state.follower.map(follower => (
+            
+        <FollowersList
+     
+        follower={follower}
+        followername={follower.login}
+        avatar_url={follower.avatar_url}
+        html_url={follower.html_url}
+         />
+            
+         ))}
+         </div>
+       
       </div>
   );
 }

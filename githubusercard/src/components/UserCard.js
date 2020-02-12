@@ -13,9 +13,9 @@ const UserCard = props => {
      <div className='UserCard'>
      <WrapperDiv>
      <h2>{props.user.name}</h2>
-     <img width='70%' src={props.user.image} alt='profile'/>
+     <img width='75%' src={props.user.avatar_url} alt="User Avatar" />
      <p>{props.user.bio}</p>
-     <a href={props.user.githublink}>Link to Github</a>
+     <p> Profile: <a href={props.user.html_url}>{props.user.login}</a></p>
      </WrapperDiv>
      </div>
  )   
