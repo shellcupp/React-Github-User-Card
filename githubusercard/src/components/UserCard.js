@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
+//second I displayed user data on a github user card by passing the data as props
 const WrapperDiv = styled.div`
-width: 25%;
+width: auto%;
 background-color: teal;
 margin: 3%;
 padding: 1.5%;
